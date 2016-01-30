@@ -175,7 +175,8 @@ Bundle 'tomasr/molokai'
 Bundle 'kien/rainbow_parentheses.vim'
 
 " ---------------------------------------------------------------------------
-"  Markdown 语法高亮
+"  <Markdown> 语法高亮
+"  --------------------------------------------------------------------------
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 " 支持各种后缀的markdown文件
