@@ -137,8 +137,9 @@ alias lstrash="trash-list"
 
 #全局搜索替换
 #sr wrong_word correct_word
-function sr {
-    find . -type f | xargs sed -i '' s/$1/$2/g {} +
+sr () {
+    sed -i "s/$1/$2/g" **/*(.)
 }
+
 
 
