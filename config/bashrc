@@ -102,7 +102,7 @@ PROMPT_COMMAND="find_git_branch;$PROMPT_COMMAND"
 export PS1="$white[$magenta\u$white@$green\h$white:$cyan\W$yellow\$git_branch$white]\$ $normal"
 
 #enable python plugin thefuck
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
 #for ack-grep tool
 alias ack="ack-grep"

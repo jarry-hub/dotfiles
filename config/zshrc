@@ -116,9 +116,6 @@ alias websiteget="wget --random-wait -r -p -e robots=off -U mozilla"
 alias listen="lsof -P -i -n"
 alias port='netstat -tulanp'
 
-#for ack-grep tool
-alias ack="ack-grep"
-
 #for dstat tool
 alias dstat="dstat -cdlmnpsy"
 
@@ -137,3 +134,11 @@ alias  tmux="tmux -2"
 alias rmf="/bin/rm"
 alias rm="trash-put"
 alias lstrash="trash-list"
+
+#全局搜索替换
+#sr wrong_word correct_word
+function sr {
+    find . -type f | xargs sed -i '' s/$1/$2/g {} +
+}
+
+
