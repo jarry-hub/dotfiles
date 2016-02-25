@@ -141,5 +141,5 @@ sr () {
     sed -i "s/$1/$2/g" **/*(.)
 }
 
-
-
+#enable python plugin thefuck
+eval $(thefuck --alias)
