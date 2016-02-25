@@ -142,4 +142,5 @@ sr () {
 }
 
 #enable python plugin thefuck
+#安装命令 wget -O - https://raw.githubusercontent.com/nvbn/thefuck/master/install.sh | sh - && $0
 eval $(thefuck --alias)
