@@ -150,13 +150,10 @@ Bundle 'bufexplorer.zip'
 Bundle 'ccvext.vim'
 Bundle 'cSyntaxAfter'
 Bundle 'ctrlpvim/ctrlp.vim'
-Bundle 'mattn/emmet-vim'
 Bundle 'Yggdroot/indentLine'
 Bundle 'Mark--Karkat'
-"Bundle 'Shougo/neocomplcache.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-" Bundle 'OmniCppComplete'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'repeat.vim'
 Bundle 'msanders/snipmate.vim'
@@ -168,11 +165,36 @@ Bundle 'majutsushi/tagbar'
 Bundle 'taglist.vim'
 Bundle 'TxtBrowser'
 Bundle 'ZoomWin'
-" Bundle 'winmanager'
 Bundle 'cscope.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'tomasr/molokai'
 Bundle 'kien/rainbow_parentheses.vim'
+
+" 保存vim编辑信息，比如最后的位置 推荐：****
+Bundle "vim-scripts/restore_view.vim"
+ 
+" 状态栏效果 推荐：***
+Bundle "bling/vim-airline"
+ 
+" python 推荐：****
+Bundle 'yssource/python.vim'
+Bundle 'python_match.vim'
+Bundle 'hdima/python-syntax'
+Bundle 'hynek/vim-python-pep8-indent'
+
+" js 推荐：****
+Bundle 'elzr/vim-json'
+Bundle 'groenewege/vim-less'
+Bundle 'pangloss/vim-javascript'
+Bundle 'briancollins/vim-jst'
+Bundle 'kchmck/vim-coffee-script'
+
+" html 推荐：****
+Bundle 'amirh/HTML-AutoCloseTag'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'gorodinskiy/vim-coloresque'
+Bundle 'tpope/vim-haml'
+Bundle 'mattn/emmet-vim'
 
 " ---------------------------------------------------------------------------
 "  <Markdown> 语法高亮
@@ -807,10 +829,6 @@ nmap <F2> :NERDTreeToggle<CR>
 " 所以我就将--c++-kinds=+p参数给去掉了，如果大侠有什么其它解决方法希望不要保留呀
 set completeopt=menu                        "关闭预览窗口
 
-" -----------------------------------------------------------------------------
-"  < powerline 插件配置 >
-" -----------------------------------------------------------------------------
-" 状态栏插件，更好的状态栏效果
 
 " -----------------------------------------------------------------------------
 "  < repeat 插件配置 >
