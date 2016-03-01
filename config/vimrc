@@ -186,7 +186,7 @@ let g:vim_markdown_frontmatter=1
 " 禁止折叠
 let g:vim_markdown_folding_disabled = 1
 " 语法隐藏,比如图片和网站链接,没什么用,主要由indentLine控制
-" set conceallevel=0
+" set conceallevel=1
 
 " ----------------------------------------------------------------------------
 
@@ -737,7 +737,7 @@ let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#A4E57E'
 
 " 设置语法隐藏等级
-let g:indentLine_conceallevel = 0 
+let g:indentLine_conceallevel = 1
 
 " -----------------------------------------------------------------------------
 "  < vim-javacompleteex（也就是 javacomplete 增强版）插件配置 >
