@@ -997,7 +997,7 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " -----------------------------------------------------------------------------
-"  < cscope 工具配置 >
+"  < fcitx 工具配置 >
 " -----------------------------------------------------------------------------
 let g:input_toggle = 1
 function! Fcitx2en()
