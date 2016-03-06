@@ -14,7 +14,7 @@ echo $SCRIPTPATH
 
 dir=$SCRIPTPATH/..
 olddir=$SCRIPTPATH/../dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim zshrc tmux.conf ycm_extra_conf.py gitconfig"    # list of files/folders to symlink in homedir
+files="bashrc script zshrc tmux.conf ycm_extra_conf.py gitconfig vimrc.local"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -22,11 +22,6 @@ files="bashrc vimrc vim zshrc tmux.conf ycm_extra_conf.py gitconfig"    # list o
 echo "Creating $olddir for backup of any existing dotfiles in current directory"
 mkdir -p $olddir
 echo "...done"
-
-# # change to the dotfiles directory
-# echo "Changing to the $dir directory"
-# cd $dir
-# echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do

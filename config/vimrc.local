@@ -1,0 +1,88 @@
+"Plugin{
+    "cscope {
+    " 用Cscope自己的话说 - "你可以把它当做是超过频的ctags"
+    if has("cscope")
+        "使用|:cstag|而不是默认的:tag行为
+        set cst
+        "设定可以使用 quickfix 窗口来查看 cscope 结果
+        set cscopequickfix=s-,c-,d-,i-,t-,e-
+        "使支持用 Ctrl+]  和 Ctrl+t 快捷键在代码间跳转
+        set cscopetag
+        "如果你想反向搜索顺序设置为1
+        set csto=1
+        "在当前目录中添加任何数据库
+        if filereadable("./cscope.out")
+            cs add ./cscope.out
+        elseif filereadable("../cscope.out")
+            cs add ../cscope.out
+        elseif filereadable("../../cscope.out")
+            cs add ../../cscope.out
+        elseif filereadable("../../../cscope.out")
+            cs add ../../../cscope.out
+        elseif filereadable("../../../../cscope.out")
+            cs add ../../../../cscope.out
+        elseif filereadable("../../../../../cscope.out")
+            cs add ../../../../../cscope.out
+        elseif filereadable("../../../../../../cscope.out")
+            cs add ../../../../../../cscope.out
+        elseif filereadable("../../../../../../../cscope.out")
+            cs add ../../../../../../../cscope.out
+        elseif filereadable("../../../../../../../../cscope.out")
+            cs add ../../../../../../../../cscope.out
+            " else add the database pointed to by environment variable
+        elseif $CSCOPE_DB != ""
+            cs add $CSCOPE_DB
+        endif
+        set cscopeverbose
+        "快捷键设置
+        "查找本 C 符号(可以跳过注释)
+        nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+        "查找本定义
+        nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+        "查找调用本函数的函数
+        nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+        "查找本字符串
+        nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+        "查找本 egrep 模式
+        nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+        "查找本文件
+        nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+        "查找包含本文件的文件
+        nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+        "查找本函数调用的函数
+        nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+    endif
+" }
+
+"General{
+    " 常规模式下用空格键来开关光标行所在折叠（注：zR 展开所有折叠，zM 关闭所有折叠）
+    nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
+    " 常规模式下输入 cS 清除行尾空格
+    nmap cS :%s/\s\+$//g<CR>:noh<CR>
+    " 常规模式下输入 cM 清除行尾 ^M 符号
+    nmap cM :%s/\r$//g<CR>:noh<CR>
+
+    "input method
+    let g:input_toggle = 1
+    function! Fcitx2en()
+        let s:input_status = system("fcitx-remote")
+        if s:input_status == 2
+            let g:input_toggle = 1
+            let l:a = system("fcitx-remote -c")
+        endif
+    endfunction
+
+    function! Fcitx2zh()
+        let s:input_status = system("fcitx-remote")
+        if s:input_status != 2 && g:input_toggle == 1
+            let l:a = system("fcitx-remote -o")
+            let g:input_toggle = 0
+        endif
+    endfunction
+
+    set timeoutlen=300
+    autocmd InsertLeave * call Fcitx2en()
+    autocmd InsertEnter * call Fcitx2zh() 
+"}
+

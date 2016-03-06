@@ -6,8 +6,8 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific aliases and functions
-alias rebuild="~/.vim/script/rebuild"
-alias csclean="~/.vim/script/csclean"
+alias rebuild="~/.script/rebuild"
+alias csclean="~/.script/csclean"
 alias list="svn st -q"
 alias svnmeld="svn diff --diff-cmd=meld"
 

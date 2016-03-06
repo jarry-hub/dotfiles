@@ -87,8 +87,8 @@ alias sourzsh="source ~/.zshrc"
 alias -s txt="vim"
 
 #chengyi personal config
-alias rebuild="~/.vim/script/rebuild"
-alias csclean="~/.vim/script/csclean"
+alias rebuild="~/.script/rebuild"
+alias csclean="~/.script/csclean"
 alias list="svn st -q"
 alias svnmeld="svn diff --diff-cmd=meld"
 alias ls="ls --color=auto"
