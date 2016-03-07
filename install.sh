@@ -1,5 +1,3 @@
-echo 'You might need to change your default shell to zsh `sudo vim /etc/passwd`'
-
 #Mkdir for dotfiles
 dir="$HOME/.chengyi/handsome"
 if [ -d  $(dir) ]
@@ -12,9 +10,11 @@ cd $dir
 #Install some essential package
 echo "安装将花费一定时间，请耐心等待直到安装完成^_^"
 if which apt-get >/dev/null; then
-    sudo apt-get install -y tmux zsh git wget cmake build-essential python-dev ctags cscope autojump
+    sudo apt-get install -y tmux zsh git cmake build-essential python-dev ctags cscope autojump
 elif which yum >/dev/null; then
-    sudo yum install  -y tmux zsh git wget cmake build-essential python-dev ctags cscope autojump
+    sudo yum install  -y tmux zsh git cmake build-essential python-dev ctags cscope autojump
+else
+    echo "you may install some essential package by you own"
 fi
 
 chsh -s /bin/zsh
@@ -22,54 +22,23 @@ chsh -s /bin/zsh
 #Install zsh framework oh-my-zsh
 if [ ! -d ~/.oh-my-zsh ]; then
     echo "oh my zsh didn't exist,download......."
-
-    wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
 #Download my dotfiles
 git clone -b develop --recursive git://github.com/chengyi818/dotfiles.git
 cd dotfiles
 
-
-############################
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
-############################
-
-########## Variables
-
-# Absolute path to this script, e.g. /home/user/bin/foo.sh
-SCRIPT=$(readlink -f "$0")
-# Absolute path this script is in, thus /home/user/bin
-SCRIPTPATH=$(dirname "$SCRIPT")
-echo $SCRIPTPATH
-
-dir=$SCRIPTPATH/..
-# old dotfiles backup directory
-olddir=$SCRIPTPATH/../dotfiles_old          
-# list of files/folders to symlink in homedir
-files="bashrc script zshrc tmux.conf ycm_extra_conf.py gitconfig vimrc.local vimrc.before.local vimrc.bundles.local"
-
-
-# create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in current directory"
-mkdir -p $olddir
-echo "...done"
-
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-for file in $files; do
-    echo "Backup ~/.$file from ~ to $olddir"
-    mv ~/.$file $olddir 2>/dev/null
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/config/$file ~/.$file
-done
+#make symlink for all dotfiles
+sh script_dot_use/symlink-dotfiles.sh
 
 #Install vimrc framework spf13
-cd $dir
 curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 
-#At last source everything
+#source everything
 source ~/.bashrc
+source ~/.vimrc
 source ~/.zshrc
 
-#not use YouCompleteMe
-#bash script/YouCompleteMe.sh
+#compile YouCompleteMe
+bash script_dot_use/YouCompleteMe.sh
