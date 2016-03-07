@@ -10,10 +10,11 @@ mkdir -p $dir
 cd $dir
 
 #Install some essential package
-if [ -f /usr/bin/apt-get ];then
-    sudo apt-get install tmux zsh git wget cmake build-essential python-dev ctags cscope autojump
-else
-    echo "apt-get isn't in you system,so you need install some necessary package by you own."
+echo "安装将花费一定时间，请耐心等待直到安装完成^_^"
+if which apt-get >/dev/null; then
+    sudo apt-get install -y tmux zsh git wget cmake build-essential python-dev ctags cscope autojump
+elif which yum >/dev/null; then
+    sudo yum install  -y tmux zsh git wget cmake build-essential python-dev ctags cscope autojump
 fi
 
 chsh -s /bin/zsh
