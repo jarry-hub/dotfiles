@@ -2,7 +2,12 @@ echo 'You might need to change your default shell to zsh `sudo vim /etc/passwd`'
 
 #Mkdir for dotfiles
 dir="$HOME/.chengyi/handsome"
-mkdir -p $dir
+if [ -d  $(dir) ];then
+    /bin/rmdir $(dir)
+    mkdir -p $dir
+else
+    mkdir -p $dir
+fi
 cd $dir
 
 
