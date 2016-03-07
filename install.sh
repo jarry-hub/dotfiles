@@ -18,16 +18,17 @@ fi
 
 chsh -s /bin/zsh
 
-#Download my dotfiles
-git clone -b develop --recursive git://github.com/chengyi818/dotfiles.git
-cd dotfiles
-
 #Install zsh framework oh-my-zsh
 if [ ! -d ~/.oh-my-zsh ]; then
     echo "oh my zsh didn't exist,download......."
 
     wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 fi
+
+#Download my dotfiles
+git clone -b develop --recursive git://github.com/chengyi818/dotfiles.git
+cd dotfiles
+
 
 ############################
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
