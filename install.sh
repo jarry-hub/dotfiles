@@ -16,7 +16,6 @@ elif which yum >/dev/null; then
 else
     echo "you may install some essential package by you own"
 fi
-
 chsh -s /bin/zsh
 
 #Install zsh framework oh-my-zsh
