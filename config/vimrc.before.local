@@ -1,2 +1,1 @@
-" Disable wrap relative motion for start/end line motions
-   let g:spf13_no_wrapRelMotion = 1
+let g:spf13_bundle_groups=['general', 'writing', 'youcompleteme', 'programming', 'python', 'javascript', 'html', 'misc',]
