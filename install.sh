@@ -48,7 +48,6 @@ olddir=$SCRIPTPATH/../dotfiles_old
 # list of files/folders to symlink in homedir
 files="bashrc script zshrc tmux.conf ycm_extra_conf.py gitconfig vimrc.local vimrc.before.local vimrc.bundles.local"
 
-##########
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in current directory"

@@ -54,3 +54,11 @@ git config --global user.mail "XXX@XXX"
 
 > 刚开始的时候需要输入root密码
 
+### 三
+spf13默认的代码补全插件是neocomplete,我把它改成了更强大的YouCompleteMe.
+
+当然用过YCM的同学都知道这个强大的插件需要编译,[编译详细方法](https://github.com/Valloric/YouCompleteMe)
+
+简易编译方法是在终端执行
+
+> `sh ~/.chengyi/handsome/dotfiles/script_dot_use/YouCompleteMe.sh`
