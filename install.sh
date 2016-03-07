@@ -15,11 +15,19 @@ cd $dir
 git clone -b develop --recursive git://github.com/chengyi818/dotfiles.git
 cd dotfiles
 
+#Install zsh framework oh-my-zsh
+if [ ! -d ~/.oh-my-zsh ]; then
+    echo "oh my zsh didn't exist,download......."
+
+    wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+fi
+
 sudo bash script/system-essential.sh
 sudo bash script/symlink-dotfiles.sh
 
 #Install vimrc framework spf13
 curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+
 
 #At last source everything
 source ~/.bashrc
