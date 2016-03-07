@@ -4,11 +4,9 @@ echo 'You might need to change your default shell to zsh `sudo vim /etc/passwd`'
 dir="$HOME/.chengyi/handsome"
 if [ -d  $(dir) ]
 then
-    /bin/rmdir $(dir)
-    mkdir -p $dir
-else
-    mkdir -p $dir
+    /bin/rm -rf $(dir)
 fi
+mkdir -p $dir
 cd $dir
 
 sudo bash dot_script/system-essential.sh
