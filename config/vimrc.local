@@ -52,6 +52,12 @@
         "查找本函数调用的函数
         nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
     endif
+    
+    " NerdTree {
+        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+            let NERDTreeQuitOnOpen=0
+        endif
+    " }
 " }
 
 "General{
