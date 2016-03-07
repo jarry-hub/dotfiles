@@ -13,8 +13,10 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 echo $SCRIPTPATH
 
 dir=$SCRIPTPATH/..
-olddir=$SCRIPTPATH/../dotfiles_old             # old dotfiles backup directory
-files="bashrc script zshrc tmux.conf ycm_extra_conf.py gitconfig vimrc.local vimrc.before.local"    # list of files/folders to symlink in homedir
+# old dotfiles backup directory
+olddir=$SCRIPTPATH/../dotfiles_old          
+# list of files/folders to symlink in homedir
+files="bashrc script zshrc tmux.conf ycm_extra_conf.py gitconfig vimrc.local vimrc.before.local vimrc.bundles.local"
 
 ##########
 
