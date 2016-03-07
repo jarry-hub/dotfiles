@@ -2,7 +2,8 @@ echo 'You might need to change your default shell to zsh `sudo vim /etc/passwd`'
 
 #Mkdir for dotfiles
 dir="$HOME/.chengyi/handsome"
-if [ -d  $(dir) ];then
+if [ -d  $(dir) ]
+then
     /bin/rmdir $(dir)
     mkdir -p $dir
 else
@@ -10,6 +11,7 @@ else
 fi
 cd $dir
 
+sudo bash dot_script/system-essential.sh
 
 #Download my dotfiles
 git clone -b develop --recursive git://github.com/chengyi818/dotfiles.git
@@ -22,7 +24,6 @@ if [ ! -d ~/.oh-my-zsh ]; then
     wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 fi
 
-sudo bash dot_script/system-essential.sh
 sudo bash dot_script/symlink-dotfiles.sh
 
 #Install vimrc framework spf13
