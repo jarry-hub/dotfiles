@@ -12,7 +12,7 @@ cd $dir
 
 
 #Download my dotfiles
-git clone --recursive git://github.com/chengyi818/dotfiles.git
+git clone -b develop --recursive git://github.com/chengyi818/dotfiles.git
 cd dotfiles
 
 sudo bash script/system-essential.sh
