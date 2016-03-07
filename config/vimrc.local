@@ -42,10 +42,18 @@
         "查找本函数调用的函数
         nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
     endif
+    " }
 
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
             let NERDTreeQuitOnOpen=0
+        endif
+    " }
+
+    " YouCompleteMe {
+        if count(g:spf13_bundle_groups, 'youcompleteme')
+            "关闭加载.ycm_extra_conf.py提示
+            let g:ycm_confirm_extra_conf=0
         endif
     " }
 " }
