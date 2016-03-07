@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+flags	/home/chengyi/code/my_github/dotfiles/config/ycm_extra_conf.py	/^flags = [$/;"	variable	line:26
+compilation_database_folder	/home/chengyi/code/my_github/dotfiles/config/ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	variable	line:62
+database	/home/chengyi/code/my_github/dotfiles/config/ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	variable	line:65
+database	/home/chengyi/code/my_github/dotfiles/config/ycm_extra_conf.py	/^  database = None$/;"	variable	line:67
+SOURCE_EXTENSIONS	/home/chengyi/code/my_github/dotfiles/config/ycm_extra_conf.py	/^SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]$/;"	variable	line:69
+DirectoryOfThisScript	/home/chengyi/code/my_github/dotfiles/config/ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	function	line:71
+MakeRelativePathsInFlagsAbsolute	/home/chengyi/code/my_github/dotfiles/config/ycm_extra_conf.py	/^def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):$/;"	function	line:75
+IsHeaderFile	/home/chengyi/code/my_github/dotfiles/config/ycm_extra_conf.py	/^def IsHeaderFile( filename ):$/;"	function	line:104
+GetCompilationInfoForFile	/home/chengyi/code/my_github/dotfiles/config/ycm_extra_conf.py	/^def GetCompilationInfoForFile( filename ):$/;"	function	line:109
+FlagsForFile	/home/chengyi/code/my_github/dotfiles/config/ycm_extra_conf.py	/^def FlagsForFile( filename, **kwargs ):$/;"	function	line:129
+warning	/home/chengyi/code/my_github/dotfiles/README.md	/^#warning$/;"	function	line:1
+dotfiles	/home/chengyi/code/my_github/dotfiles/README.md	/^# dotfiles$/;"	function	line:10
+快速下载使用办法	/home/chengyi/code/my_github/dotfiles/README.md	/^##快速下载使用办法$/;"	function	line:13
+说明	/home/chengyi/code/my_github/dotfiles/README.md	/^## 说明$/;"	function	line:30
+备注:	/home/chengyi/code/my_github/dotfiles/README.md	/^##备注:$/;"	function	line:41
+一	/home/chengyi/code/my_github/dotfiles/README.md	/^### 一$/;"	function	line:43
+二	/home/chengyi/code/my_github/dotfiles/README.md	/^### 二$/;"	function	line:51
+三	/home/chengyi/code/my_github/dotfiles/README.md	/^### 三$/;"	function	line:57
