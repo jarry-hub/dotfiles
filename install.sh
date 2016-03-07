@@ -15,5 +15,9 @@ cd dotfiles
 sudo bash script/system-essential.sh
 sudo bash script/symlink-dotfiles.sh
 
+#At last source everything
+source ~/.bashrc
+source ~/.zshrc
+
 #not use YouCompleteMe
 #bash script/YouCompleteMe.sh
