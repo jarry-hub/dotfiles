@@ -1,22 +1,23 @@
-#Mkdir for dotfiles
-dir="$HOME/.chengyi/handsome"
-if [ -d  $(dir) ]
-then
-    /bin/rm -rf $(dir)
-fi
-mkdir -p $dir
-cd $dir
+#!/usr/bin/env sh
 
 #Install some essential package
-echo "安装将花费一定时间，请耐心等待直到安装完成^_^"
+echo "安装一些必要的软件将花费一定时间，请耐心等待直到安装完成^_^"
 if which apt-get >/dev/null; then
     sudo apt-get install -y tmux zsh git cmake build-essential python-dev ctags cscope autojump
+    sudo gem install homesick
 elif which yum >/dev/null; then
     sudo yum install  -y tmux zsh git cmake build-essential python-dev ctags cscope autojump
+    sudo gem install homesick
 else
-    echo "you may install some essential package by you own"
+    echo "无法帮你自动安装基本软件,请手动安装!"
 fi
 chsh -s /bin/zsh
+
+#Download my dotfiles
+git clone -b develop --recursive git://github.com/chengyi818/dotfiles.git
+
+#backup files
+echo ""
 
 #Install zsh framework oh-my-zsh
 if [ ! -d ~/.oh-my-zsh ]; then
@@ -24,9 +25,6 @@ if [ ! -d ~/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-#Download my dotfiles
-git clone -b develop --recursive git://github.com/chengyi818/dotfiles.git
-cd dotfiles
 
 #make symlink for all dotfiles
 sh script_dot_use/symlink-dotfiles.sh
