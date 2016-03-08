@@ -73,14 +73,16 @@ install_essential_package
 
 #Download chengyi818 dotfiles
 program_must_exist "homesick"
+echo "正在下载我为您精心准备的配置"
 homesick clone chengyi818/dotfiles
 
 #backup files
 echo "现在备份原有文件"
 mkdir -p ~/.homesick/dotfiles_old
+
 do_backup "~/.vim"\
 	"~/.vimrc"\
-	"~/.bashrc
+	"~/.bashrc"
 
 do_backup "~/.zshrc"\
 	"~/.vimrc.local"\
