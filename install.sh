@@ -64,7 +64,7 @@ do_backup() {
         msg "Attempting to back up your original configuration."
         today=`date +%Y%m%d_%s`
         for i in "$1" "$2" "$3"; do
-            [ -e "$i" ] && [ ! -L "$i" ] && mv -v "$i" "~/.homesick/dotfiles_old/$i.$today";
+            [ -e "$i" ] && mv -v "$i" "~/.homesick/dotfiles_old/$i.$today";
         done
         ret="$?"
         success "Your original configuration has been backed up."
