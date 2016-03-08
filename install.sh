@@ -44,7 +44,12 @@ program_must_exist() {
 
 install_essential_package() {
 	echo "安装一些必要的软件将花费一定时间，请耐心等待直到安装完成^_^"
-	sudo gem install homesick
+    	program_exists homesick
+    	# throw error on non-zero return value
+    	if [ "$?" -ne 0 ]; then
+		sudo gem install homesick
+    	fi
+
 	if which apt-get >/dev/null; then
 		sudo apt-get install -y tmux zsh git cmake build-essential python-dev ctags cscope autojump
 	elif which yum >/dev/null; then
