@@ -92,7 +92,8 @@ do_backup "~/.script"\
 	"~/.ycm_extra_conf.py"
 
 do_backup "~/.vimrc.bundles.local"\
-	"~/.gitconfig"
+	"~/.gitconfig"\
+	"~/.gvimrc"
 echo "备份完成"
 
 
