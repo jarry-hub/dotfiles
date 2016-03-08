@@ -117,7 +117,9 @@ fi
 homesick link --force dotfiles
 
 #自动安装spf13框架
+echo "下面为您安装spf13 vim框架"
 curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+echo "spf13 vim安装完毕"
 
 #source everything
 source ~/.bashrc
