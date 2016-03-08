@@ -127,8 +127,10 @@ source ~/.vimrc
 source ~/.zshrc
 
 #自动编译YCM
-if [ -d ~/.vim/bundle/YouCompleteMe ];then
-    cd ~/.vim/bundle/YouCompleteMe
-    git submodule update --init --recursive
-    ./install.py --clang-completer
+if which apt-get >/dev/null; then
+    if [ -d ~/.vim/bundle/YouCompleteMe ];then
+        cd ~/.vim/bundle/YouCompleteMe
+        git submodule update --init --recursive
+        ./install.py --clang-completer
+    fi
 fi
