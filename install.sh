@@ -20,7 +20,7 @@ chsh -s /bin/zsh
 
 #Install zsh framework oh-my-zsh
 if [ ! -d ~/.oh-my-zsh ]; then
-    echo "oh my zsh didn't exist,download......."
+    echo "oh-my-zsh didn't exist,download and install......."
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
