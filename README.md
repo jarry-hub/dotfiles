@@ -23,7 +23,7 @@ sudo apt-get install curl
 然后执行以下命令即可:
 
 curl --silent
-https://raw.githubusercontent.com/chengyi818/dotfiles/develop/install.sh | sh
+https://raw.githubusercontent.com/chengyi818/dotfiles/master/install.sh | sh
 
 ## 说明
 主要针对文本三巨头tmux,zsh和vim的设置
