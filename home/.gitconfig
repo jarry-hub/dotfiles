@@ -1,0 +1,29 @@
+[user]
+    name = chengyi818
+    email = chengyi818@foxmail.com
+[push]
+    default = matching
+[color]
+    ui = true
+[alias]
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lga = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+    st = status
+    co = checkout
+    ci = commit
+    br = branch 
+    bra = branch -avv
+    unstage = reset HEAD
+    last = log -1 HEAD
+    c = commit -m 
+    cob = checkout -b
+    m = merge
+    a = add
+    brd = branch -d
+[diff]
+    tool = meld
+[merge]
+	tool = kdiff3
+	conflictstyle = diff3
+[core]
+    editor = vim

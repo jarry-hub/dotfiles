@@ -1,0 +1,2 @@
+#!/bin/sh
+find $(pwd) -name "cscope.*" | xargs -t -i rm -rf {}

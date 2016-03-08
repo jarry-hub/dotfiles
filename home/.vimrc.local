@@ -1,0 +1,72 @@
+"Plugin{
+"cscope {
+" 用Cscope自己的话说 - "你可以把它当做是超过频的ctags"
+if has("cscope")
+    "使用|:cstag|而不是默认的:tag行为
+    set cst
+    "设定可以使用 quickfix 窗口来查看 cscope 结果
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+    "使支持用 Ctrl+]  和 Ctrl+t 快捷键在代码间跳转
+    set cscopetag
+    "如果你想反向搜索顺序设置为1
+    set csto=1
+
+    "在当前目录中添加任何数据库
+    function! LoadCscope()
+        let db = findfile("cscope.out", ".;")
+        if (!empty(db))
+            let path = strpart(db, 0, match(db, "/cscope.out$"))
+            set nocscopeverbose " suppress 'duplicate connection' error
+            exe "cs add " . db . " " . path
+            set cscopeverbose
+        endif
+    endfunction
+    au BufEnter /* call LoadCscope()
+
+    set cscopeverbose
+    "快捷键设置
+    "查找本 C 符号(可以跳过注释)
+    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    "查找本定义
+    nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    "查找调用本函数的函数
+    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    "查找本字符串
+    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    "查找本 egrep 模式
+    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    "查找本文件
+    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    "查找包含本文件的文件
+    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    "查找本函数调用的函数
+    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+endif
+" }
+
+" NerdTree {
+if isdirectory(expand("~/.vim/bundle/nerdtree"))
+    let NERDTreeQuitOnOpen=0
+endif
+" }
+
+" YouCompleteMe {
+if count(g:spf13_bundle_groups, 'youcompleteme')
+    "关闭加载.ycm_extra_conf.py提示
+    let g:ycm_confirm_extra_conf=0
+endif
+" }
+" }
+
+"General{
+" 常规模式下用空格键来开关光标行所在折叠（注：zR 展开所有折叠，zM 关闭所有折叠）
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
+"Input method delay
+set ttimeoutlen=100
+"}
+
+" Formatting {
+"自动换行
+set wrap
+" }
