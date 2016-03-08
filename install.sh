@@ -44,12 +44,11 @@ program_must_exist() {
 
 install_essential_package() {
 	echo "安装一些必要的软件将花费一定时间，请耐心等待直到安装完成^_^"
+	sudo gem install homesick
 	if which apt-get >/dev/null; then
 		sudo apt-get install -y tmux zsh git cmake build-essential python-dev ctags cscope autojump
-		sudo gem install homesick
 	elif which yum >/dev/null; then
 		sudo yum install  -y tmux zsh git cmake build-essential python-dev ctags cscope autojump
-		sudo gem install homesick
 	else
 		echo "无法帮你自动安装基本软件,请手动安装!"
 	fi
@@ -74,7 +73,7 @@ install_essential_package
 
 #Download chengyi818 dotfiles
 program_must_exist "homesick"
-homesick clone chengyi818/dotfiles.git
+homesick clone chengyi818/dotfiles
 
 #backup files
 echo "现在备份原有文件"
