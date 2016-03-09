@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+######################## BASIC VARIANT
+backup_files="~/.vim ~/.vimrc ~/.bashrc ~/.zshrc ~/.vimrc.local ~/.vimrc.before.local ~/.script ~/.tmux.conf ~/.ycm_extra_conf.py ~/.vimrc.bundles.local ~/.gitconfig ~/.gvimrc"
+
 ######################## BASIC SETUP TOOLS
 msg() {
     printf '%b\n' "$1" >&2
@@ -83,21 +86,8 @@ homesick clone chengyi818/dotfiles
 echo "现在备份原有文件"
 mkdir -p ~/.homesick/dotfiles_old
 
-for i in\
-    "~/.vim"\
-    "~/.vimrc"\
-    "~/.bashrc"\
-    "~/.zshrc"\
-    "~/.vimrc.local"\
-    "~/.vimrc.before.local"\
-    "~/.script"\
-    "~/.tmux.conf"\
-    "~/.ycm_extra_conf.py"\
-    "~/.vimrc.bundles.local"\
-    "~/.gitconfig"\
-    "~/.gvimrc"\
-    ; do
-do_backup "$i"
+for i in $(backup_files); do
+    do_backup "$i"
 done
 echo "备份完成"
 
