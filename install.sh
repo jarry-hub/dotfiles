@@ -99,7 +99,9 @@ fi
 
 
 #homesick自动创建软链接
+echo "下面为您创建软链接"
 homesick link --force dotfiles
+echo "软链接创建完毕"
 
 #自动安装spf13框架
 echo "下面为您安装spf13 vim框架"
