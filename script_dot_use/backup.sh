@@ -75,14 +75,6 @@ do_backup() {
 }
 
 ######################## MAIN()
-#Install some essential package
-install_essential_package
-
-#Download chengyi818 dotfiles
-program_must_exist "homesick"
-echo "正在下载我为您精心准备的配置"
-homesick clone chengyi818/dotfiles
-
 #backup files
 echo "现在备份原有文件"
 mkdir -p $HOME/.homesick/dotfiles_old
@@ -91,46 +83,3 @@ for i in ${backup_files[@]}; do
     do_backup "$i"
 done
 echo "备份完成"
-
-
-#自动安装oh-my-zsh
-if [ ! -d ~/.oh-my-zsh ]; then
-    echo "还没有安装oh-my-zsh,现在帮您自动安装,请耐性等待"
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    if [ -d ~/.oh-my-zsh ]; then
-	    echo "oh-my-zsh安装完毕"
-    fi
-fi
-
-
-#homesick自动创建软链接
-homesick link --force dotfiles
-
-#自动安装spf13框架
-echo "下面为您安装spf13 vim框架"
-curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
-echo "spf13 vim安装完毕"
-
-#source everything
-source ~/.bashrc
-source ~/.vimrc
-source ~/.zshrc
-
-#自动编译YCM
-if [ -d ~/.vim/bundle/YouCompleteMe ];then
-    if which apt-get >/dev/null; then
-        if ［ $（getconf WORD_BIT） = ‘32’ ］ && ［ $（getconf LONG_BIT） = ‘64’ ］ ; then
-            cd ~/.vim/bundle/YouCompleteMe
-            git submodule update --init --recursive
-            ./install.py --clang-completer
-            ret="$?"
-            if [ "$ret" -ne '0' ];then
-                echo "编译YouCompleteMe的过程中出错啦,现在帮您更换代码补全工具"
-                echo "let g:spf13_bundle_groups=['general', 'writing', 'youcompleteme', 'programming', 'python', 'javascript', 'html', 'misc',]" > ~/vimrc.before.local
-                vim -u "~/.spf13-vim-3/.vimrc.bundles.default" "+set nomore" "+BundleInstall!" "+BundleClean" "+qall"
-            fi
-        fi
-    else
-        echo "看起来,你必须自己手动编译YouCompleteME了"
-    fi
-fi
