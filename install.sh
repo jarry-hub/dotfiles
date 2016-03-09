@@ -116,8 +116,9 @@ source ~/.zshrc
 #自动编译YCM
 if [ -d ~/.vim/bundle/YouCompleteMe ];then
     if which apt-get >/dev/null; then
-        if ［ $（getconf WORD_BIT） = ‘32’ ］ && ［ $（getconf LONG_BIT） = ‘64’ ］ ; then
+        if [ $(getconf WORD_BIT)  = '32' ] && [ $(getconf LONG_BIT) = '64' ];then
             cd ~/.vim/bundle/YouCompleteMe
+            git pull
             git submodule update --init --recursive
             ./install.py --clang-completer
             ret="$?"
@@ -131,4 +132,3 @@ if [ -d ~/.vim/bundle/YouCompleteMe ];then
         echo "看起来,你必须自己手动编译YouCompleteME了"
     fi
 fi
-

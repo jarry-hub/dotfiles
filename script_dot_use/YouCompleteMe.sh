@@ -1,7 +1,7 @@
 #!/bin/sh
 if [ -d ~/.vim/bundle/YouCompleteMe ];then
     if which apt-get >/dev/null; then
-        if ［ $（getconf WORD_BIT） = ‘32’ ］ && ［ $（getconf LONG_BIT） = ‘64’ ］ ; then
+        if [ $(getconf WORD_BIT)  = '32' ] && [ $(getconf LONG_BIT) = '64' ];then
             cd ~/.vim/bundle/YouCompleteMe
             git pull
             git submodule update --init --recursive
