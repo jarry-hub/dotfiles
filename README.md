@@ -32,8 +32,11 @@ tmux设置相对比较简单,是我自己写的.
 
 zsh设置使用的是[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
-vim使用的是[spf13](https://github.com/spf13/spf13-vim)
-
+vim使用的是[spf13](https://github.com/spf13/spf13-vim).
+更新升级命令:
+```
+curl https://j.mp/spf13-vim3 -L -o - | sh
+```
 此外还包括git和bash的设置.
 
 ##备注:
