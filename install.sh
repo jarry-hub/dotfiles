@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 ######################## BASIC VARIANT
-backup_files=("$HOME/.vim" "$HOME/.vimrc" "$HOME/.bashrc" "$HOME/.zshrc" "$HOME/.vimrc.local" "$HOME/.vimrc.before.local" "$HOME/.script" "$HOME/.tmux.conf" "$HOME/.ycm_extra_conf.py" "$HOME/.vimrc.bundles.local" "$HOME/.gitconfig" "$HOME/.gvimrc")
+backup_files=(".vim" ".vimrc" ".bashrc" ".zshrc" ".vimrc.local" ".vimrc.before.local" ".script" ".tmux.conf" ".ycm_extra_conf.py" ".vimrc.bundles.local" ".gitconfig" ".gvimrc")
+REPO_URL='chengyi818/dotfiles'
 
 ######################## BASIC SETUP TOOLS
 msg() {
@@ -62,14 +63,9 @@ install_essential_package() {
 }
 ################################## SETUP FUNCTIONS
 do_backup() {
-    echo "$1"
-    if [ -e "$1" ]; then
-        msg "Attempting to back up your $1 original configuration."
+    if [ -e "$HOME/$1" ]; then
         today=`date +%Y%m%d_%s`
-        mv -v "$1" "$HOME/.homesick/dotfiles_old/$1.$today";
-        ret="$?"
-        success "Your original $1 configuration has been backed up."
-        debug
+        mv -v "$HOME/$1" "$HOME/.homesick/dotfiles_old/$1.$today";
    fi
 }
 
@@ -80,7 +76,7 @@ install_essential_package
 #Download chengyi818 dotfiles
 program_must_exist "homesick"
 echo "正在下载我为您精心准备的配置"
-homesick clone chengyi818/dotfiles
+homesick clone "$REPO_URL"
 
 #backup files
 echo "现在备份原有文件"
@@ -133,3 +129,4 @@ if [ -d ~/.vim/bundle/YouCompleteMe ];then
         echo "看起来,你必须自己手动编译YouCompleteME了"
     fi
 fi
+
