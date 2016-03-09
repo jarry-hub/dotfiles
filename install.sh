@@ -79,7 +79,7 @@ echo "正在下载我为您精心准备的配置"
 homesick clone "$REPO_URL"
 
 #backup files
-echo "现在备份原有文件"
+echo "现在备份原有文件到~/.homesick/dotfiles_old"
 mkdir -p $HOME/.homesick/dotfiles_old
 
 for i in ${backup_files[@]}; do
