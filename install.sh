@@ -60,14 +60,12 @@ install_essential_package() {
 }
 ################################## SETUP FUNCTIONS
 do_backup() {
-    if [ -e "$1" ] || [ -e "$2" ] || [ -e "$3" ]; then
-        msg "Attempting to back up your original configuration."
+    if [ -e "$1" ]; then
+        msg "Attempting to back up your $(1) original configuration."
         today=`date +%Y%m%d_%s`
-        for i in "$1" "$2" "$3"; do
-            [ -e "$i" ] && mv -v "$i" "~/.homesick/dotfiles_old/$i.$today";
-        done
+        [ -e "$1" ] && mv -v "$1" "~/.homesick/dotfiles_old/$1.$today";
         ret="$?"
-        success "Your original configuration has been backed up."
+        success "Your original $(1) configuration has been backed up."
         debug
    fi
 }
@@ -85,21 +83,22 @@ homesick clone chengyi818/dotfiles
 echo "现在备份原有文件"
 mkdir -p ~/.homesick/dotfiles_old
 
-do_backup "~/.vim"\
-	"~/.vimrc"\
-	"~/.bashrc"
-
-do_backup "~/.zshrc"\
-	"~/.vimrc.local"\
-	"~/.vimrc.before.local"
-
-do_backup "~/.script"\
-	"~/.tmux.conf"\
-	"~/.ycm_extra_conf.py"
-
-do_backup "~/.vimrc.bundles.local"\
-	"~/.gitconfig"\
-	"~/.gvimrc"
+for i in\
+    "~/.vim"\
+    "~/.vimrc"\
+    "~/.bashrc"\
+    "~/.zshrc"\
+    "~/.vimrc.local"\
+    "~/.vimrc.before.local"\
+    "~/.script"\
+    "~/.tmux.conf"\
+    "~/.ycm_extra_conf.py"\
+    "~/.vimrc.bundles.local"\
+    "~/.gitconfig"\
+    "~/.gvimrc"\
+    ; do
+do_backup "$i"
+done
 echo "备份完成"
 
 
@@ -127,10 +126,16 @@ source ~/.vimrc
 source ~/.zshrc
 
 #自动编译YCM
-if which apt-get >/dev/null; then
-    if [ -d ~/.vim/bundle/YouCompleteMe ];then
+if [ -d ~/.vim/bundle/YouCompleteMe ];then
+    if which apt-get >/dev/null; then
         cd ~/.vim/bundle/YouCompleteMe
         git submodule update --init --recursive
         ./install.py --clang-completer
+        ret="$?"
+        if [ "$ret" -ne '0' ];then
+            echo "编译YouCompleteMe的过程中出错啦,少年,你可以换个补全插件或者自己手动编译YCM"
+        fi
+    else
+        echo "看起来,你必须自己手动编译YouCompleteME了"
     fi
 fi
