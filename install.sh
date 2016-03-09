@@ -134,7 +134,9 @@ if [ -d ~/.vim/bundle/YouCompleteMe ];then
             ./install.py --clang-completer
             ret="$?"
             if [ "$ret" -ne '0' ];then
-                echo "编译YouCompleteMe的过程中出错啦,少年,你可以换个补全插件或者自己手动编译YCM"
+                echo "编译YouCompleteMe的过程中出错啦,现在帮您更换代码补全工具"
+                echo "let g:spf13_bundle_groups=['general', 'writing', 'youcompleteme', 'programming', 'python', 'javascript', 'html', 'misc',]" > ~/vimrc.before.local
+                vim -u "~/.spf13-vim-3/.vimrc.bundles.default" "+set nomore" "+BundleInstall!" "+BundleClean" "+qall"
             fi
         fi
     else
