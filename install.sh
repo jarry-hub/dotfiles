@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-
 ######################## BASIC VARIANT
 backup_files=("$HOME/.vim" "$HOME/.vimrc" "$HOME/.bashrc" "$HOME/.zshrc" "$HOME/.vimrc.local" "$HOME/.vimrc.before.local" "$HOME/.script" "$HOME/.tmux.conf" "$HOME/.ycm_extra_conf.py" "$HOME/.vimrc.bundles.local" "$HOME/.gitconfig" "$HOME/.gvimrc")
 
@@ -65,11 +64,11 @@ install_essential_package() {
 do_backup() {
     echo "$1"
     if [ -e "$1" ]; then
-        msg "Attempting to back up your $(1) original configuration."
+        msg "Attempting to back up your $1 original configuration."
         today=`date +%Y%m%d_%s`
         mv -v "$1" "$HOME/.homesick/dotfiles_old/$1.$today";
         ret="$?"
-        success "Your original $(1) configuration has been backed up."
+        success "Your original $1 configuration has been backed up."
         debug
    fi
 }
