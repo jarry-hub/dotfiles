@@ -55,9 +55,9 @@ install_essential_package() {
     	fi
 
 	if which apt-get >/dev/null; then
-		sudo apt-get install -y tmux zsh git cmake build-essential python-dev ctags cscope autojump
+		sudo apt-get install -y tmux zsh git cmake build-essential python-dev ctags cscope autojump trash-cli
 	elif which yum >/dev/null; then
-		sudo yum install  -y tmux zsh git cmake build-essential python-dev ctags cscope autojump
+		sudo yum install  -y tmux zsh git cmake build-essential python-dev ctags cscope autojump trash-cli
 	else
 		echo "无法帮你自动安装基本软件,请手动安装!"
 	fi
