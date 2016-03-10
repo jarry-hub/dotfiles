@@ -64,7 +64,7 @@ spf13默认的代码补全插件是neocomplete,我把它改成了更强大的You
 
 简易编译方法是在终端执行
 
-> `sh ~/.chengyi/handsome/dotfiles/script_dot_use/YouCompleteMe.sh`
+> `bash ~/.chengyi/handsome/dotfiles/script_dot_use/YouCompleteMe.sh`
 
 ### oh-my-zsh
 如果你之前不是使用的zsh,那么需要将你的终端改为/bin/zsh,请参考[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
