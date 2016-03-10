@@ -109,6 +109,15 @@ echo "下面为您安装spf13 vim框架"
 curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 echo "spf13 vim安装完毕"
 
+if which apt-get >/dev/null; then
+    wget -O - https://raw.githubusercontent.com/nvbn/thefuck/master/install.sh | sh - && $0
+    ret="$?"
+    if [ "$ret" -ne '0' ];then
+        echo "神奇的工具thefuck没有安装成功~,现在帮你取消这部分的设置"
+        sed -i '/^eval/d' $HOME/.zshrc
+    fi
+fi
+
 #source everything
 source ~/.bashrc
 source ~/.vimrc
