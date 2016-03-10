@@ -66,7 +66,7 @@ install_essential_package() {
 do_backup() {
     if [ -e "$HOME/$1" ]; then
         today=`date +%Y%m%d_%s`
-        [ ! -L "$1" ] && mv -v "$HOME/$1" "$HOME/.homesick/dotfiles_old/$1.$today";
+        [ ! -L "$HOME/$1" ] && mv -v "$HOME/$1" "$HOME/.homesick/dotfiles_old/$1.$today";
    fi
 }
 
