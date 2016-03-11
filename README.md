@@ -21,7 +21,7 @@ sudo apt-get install curl
 然后执行以下命令即可:
 
 curl --silent
-https://raw.githubusercontent.com/chengyi818/dotfiles/master/install.sh | sh
+https://raw.githubusercontent.com/chengyi818/dotfiles/master/install.sh | bash
 
 ## 说明
 主要针对文本三巨头tmux,zsh和vim的设置
@@ -32,8 +32,11 @@ tmux设置相对比较简单,是我自己写的.
 
 zsh设置使用的是[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
-vim使用的是[spf13](https://github.com/spf13/spf13-vim)
-
+vim使用的是[spf13](https://github.com/spf13/spf13-vim).
+更新插件命令:
+```
+vim +BundleInstall! +BundleClean +q
+```
 此外还包括git和bash的设置.
 
 ##备注:
@@ -61,7 +64,7 @@ spf13默认的代码补全插件是neocomplete,我把它改成了更强大的You
 
 简易编译方法是在终端执行
 
-> `sh ~/.chengyi/handsome/dotfiles/script_dot_use/YouCompleteMe.sh`
+> `bash ~/.chengyi/handsome/dotfiles/script_dot_use/YouCompleteMe.sh`
 
 ### oh-my-zsh
 如果你之前不是使用的zsh,那么需要将你的终端改为/bin/zsh,请参考[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)

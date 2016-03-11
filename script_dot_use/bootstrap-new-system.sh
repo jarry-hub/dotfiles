@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #自动安装大量软件
 
 sudo apt-get install -y zsh wget tmux git vim gitk  python-pip python-dev\

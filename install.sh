@@ -1,4 +1,8 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+######################## BASIC VARIANT
+backup_files=(".vim" ".vimrc" ".bashrc" ".zshrc" ".vimrc.local" ".vimrc.before.local" ".script" ".tmux.conf" ".ycm_extra_conf.py" ".vimrc.bundles.local" ".gitconfig" ".gvimrc")
+
+REPO_URL='chengyi818/dotfiles'
 
 ######################## BASIC SETUP TOOLS
 msg() {
@@ -44,26 +48,25 @@ program_must_exist() {
 
 install_essential_package() {
 	echo "安装一些必要的软件将花费一定时间，请耐心等待直到安装完成^_^"
-	sudo gem install homesick
+    	program_exists homesick
+    	# throw error on non-zero return value
+    	if [ "$?" -ne 0 ]; then
+		sudo gem install homesick
+    	fi
+
 	if which apt-get >/dev/null; then
-		sudo apt-get install -y tmux zsh git cmake build-essential python-dev ctags cscope autojump
+		sudo apt-get install -y tmux zsh git cmake build-essential python-dev ctags cscope autojump trash-cli
 	elif which yum >/dev/null; then
-		sudo yum install  -y tmux zsh git cmake build-essential python-dev ctags cscope autojump
+		sudo yum install  -y tmux zsh git cmake build-essential python-dev ctags cscope autojump trash-cli
 	else
 		echo "无法帮你自动安装基本软件,请手动安装!"
 	fi
 }
 ################################## SETUP FUNCTIONS
 do_backup() {
-    if [ -e "$1" ] || [ -e "$2" ] || [ -e "$3" ]; then
-        msg "Attempting to back up your original configuration."
+    if [ -e "$HOME/$1" ]; then
         today=`date +%Y%m%d_%s`
-        for i in "$1" "$2" "$3"; do
-            [ -e "$i" ] && [ ! -L "$i" ] && mv -v "$i" "~/.homesick/dotfiles_old/$i.$today";
-        done
-        ret="$?"
-        success "Your original configuration has been backed up."
-        debug
+        [ ! -L "$HOME/$1" ] && mv -v "$HOME/$1" "$HOME/.homesick/dotfiles_old/$1.$today";
    fi
 }
 
@@ -73,26 +76,16 @@ install_essential_package
 
 #Download chengyi818 dotfiles
 program_must_exist "homesick"
-homesick clone chengyi818/dotfiles
+echo "正在下载我为您精心准备的配置"
+homesick clone "$REPO_URL"
 
 #backup files
-echo "现在备份原有文件"
-mkdir -p ~/.homesick/dotfiles_old
-do_backup "~/.vim"\
-	"~/.vimrc"\
-	"~/.bashrc
+echo "现在备份原有文件到~/.homesick/dotfiles_old"
+mkdir -p $HOME/.homesick/dotfiles_old
 
-do_backup "~/.zshrc"\
-	"~/.vimrc.local"\
-	"~/.vimrc.before.local"
-
-do_backup "~/.script"\
-	"~/.tmux.conf"\
-	"~/.ycm_extra_conf.py"
-
-do_backup "~/.vimrc.bundles.local"\
-	"~/.gitconfig"\
-	"~/.gvimrc"
+for i in ${backup_files[@]}; do
+    do_backup "$i"
+done
 echo "备份完成"
 
 
@@ -107,10 +100,23 @@ fi
 
 
 #homesick自动创建软链接
-homesick link dotfiles
+echo "下面为您创建软链接"
+homesick link --force dotfiles
+echo "软链接创建完毕"
 
 #自动安装spf13框架
+echo "下面为您安装spf13 vim框架"
 curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+echo "spf13 vim安装完毕"
+
+if which apt-get >/dev/null; then
+    wget -O - https://raw.githubusercontent.com/nvbn/thefuck/master/install.sh | sh - && $0
+    ret="$?"
+    if [ "$ret" -ne '0' ];then
+        echo "神奇的工具thefuck没有安装成功~,现在帮你取消这部分的设置"
+        sed -i '/^eval/d' $HOME/.zshrc
+    fi
+fi
 
 #source everything
 source ~/.bashrc
@@ -119,7 +125,20 @@ source ~/.zshrc
 
 #自动编译YCM
 if [ -d ~/.vim/bundle/YouCompleteMe ];then
-    cd ~/.vim/bundle/YouCompleteMe
-    git submodule update --init --recursive
-    ./install.py --clang-completer
+    if which apt-get >/dev/null; then
+        if [ $(getconf WORD_BIT)  = '32' ] && [ $(getconf LONG_BIT) = '64' ];then
+            cd ~/.vim/bundle/YouCompleteMe
+            git pull
+            git submodule update --init --recursive
+            ./install.py --clang-completer
+            ret="$?"
+            if [ "$ret" -ne '0' ];then
+                echo "编译YouCompleteMe的过程中出错啦,现在帮您更换代码补全工具"
+                echo "let g:spf13_bundle_groups=['general', 'writing', 'youcompleteme', 'programming', 'python', 'javascript', 'html', 'misc',]" > ~/vimrc.before.local
+                vim -u "~/.spf13-vim-3/.vimrc.bundles.default" "+set nomore" "+BundleInstall!" "+BundleClean" "+qall"
+            fi
+        fi
+    else
+        echo "看起来,你必须自己手动编译YouCompleteME了"
+    fi
 fi
