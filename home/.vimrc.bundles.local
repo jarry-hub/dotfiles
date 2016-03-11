@@ -1,1 +1,2 @@
 Bundle 'vim-scripts/fcitx.vim'
+Bundle 'vim-scripts/SingleCompile'
