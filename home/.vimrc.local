@@ -42,21 +42,47 @@ if has("cscope")
     "查找本函数调用的函数
     nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
-" }
+" cscope end}
 
 " NerdTree {
 if isdirectory(expand("~/.vim/bundle/nerdtree"))
     let NERDTreeQuitOnOpen=0
 endif
-" }
+" NerdTree end}
+
+" SingleCompile {
+if isdirectory(expand("~/.vim/bundle/SingleCompile"))
+    nmap <F9> :SCCompile<cr>
+    imap <F9> <ESC>:SCCompile<cr>
+    vmap <F9> <ESC>:SCCompile<cr>
+
+    nmap <F10> :SCCompileRun<cr>
+    imap <F10> <ESC>:SCCompileRun<cr>
+    vmap <F10> <ESC>:SCCompileRun<cr>
+endif
+" SingleCompile end}
 
 " YouCompleteMe {
 if count(g:spf13_bundle_groups, 'youcompleteme')
     "关闭加载.ycm_extra_conf.py提示
     let g:ycm_confirm_extra_conf=0
+    " 开启 YCM 基于标签引擎
+    let g:ycm_collect_identifiers_from_tags_files=1
+    "从第2个键入字符就开始罗列匹配项
+    let g:ycm_min_num_of_chars_for_completion=2"
+    "禁止缓存匹配项,每次都重新生成匹配项
+    " let g:ycm_cache_omnifunc=0
+    " 语法关键字补全
+    let g:ycm_seed_identifiers_with_syntax=1
+    "在注释输入中也能补全
+    let g:ycm_complete_in_comments = 1
+    "在字符串输入中也能补全
+    let g:ycm_complete_in_strings = 1
+    "注释和字符串中的文字也会被收入补全
+    let g:ycm_collect_identifiers_from_comments_and_strings = 0
 endif
-" }
-" }
+" YouCompleteMe end}
+" Plugin end}
 
 "General{
 " 常规模式下用空格键来开关光标行所在折叠（注：zR 展开所有折叠，zM 关闭所有折叠）
@@ -64,9 +90,9 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 "Input method delay
 set ttimeoutlen=100
-"}
+" General end}
 
 " Formatting {
 "自动换行
 set wrap
-" }
+" Formatting end}
