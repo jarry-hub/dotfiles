@@ -61,6 +61,7 @@ if isdirectory(expand("~/.vim/bundle/SingleCompile"))
     vmap <F10> <ESC>:SCCompileRun<cr>
 endif
 " SingleCompile end}
+" }
 
 " YouCompleteMe {
 if count(g:spf13_bundle_groups, 'youcompleteme')
