@@ -42,21 +42,21 @@ if has("cscope")
     "查找本函数调用的函数
     nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
-" }
+" cscope end}
 
 " NerdTree {
 if isdirectory(expand("~/.vim/bundle/nerdtree"))
     let NERDTreeQuitOnOpen=0
 endif
-" }
+" NerdTree end}
 
 " YouCompleteMe {
 if count(g:spf13_bundle_groups, 'youcompleteme')
     "关闭加载.ycm_extra_conf.py提示
     let g:ycm_confirm_extra_conf=0
 endif
-" }
-" }
+" YouCompleteMe end}
+" Plugin end}
 
 "General{
 " 常规模式下用空格键来开关光标行所在折叠（注：zR 展开所有折叠，zM 关闭所有折叠）
@@ -64,9 +64,9 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 "Input method delay
 set ttimeoutlen=100
-"}
+" General end}
 
 " Formatting {
 "自动换行
 set wrap
-" }
+" Formatting end}
