@@ -69,3 +69,5 @@ spf13默认的代码补全插件是neocomplete,我把它改成了更强大的You
 ### oh-my-zsh
 如果你之前不是使用的zsh,那么需要将你的终端改为/bin/zsh,请参考[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
+## 详细说明
+我的同事张瑞和我写了一份相对[详细使用说明](https://github.com/chengyi818/dotfiles/blob/master/dotfiles.md),包括我们常用的代码跳转和vim插件的说明.希望可以帮助到大家.
