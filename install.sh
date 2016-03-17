@@ -2,7 +2,7 @@
 ######################## BASIC VARIANT
 backup_files=(".vim" ".vimrc" ".bashrc" ".zshrc" ".vimrc.local" ".vimrc.before.local" ".script" ".tmux.conf" ".ycm_extra_conf.py" ".vimrc.bundles.local" ".gitconfig" ".gvimrc")
 
-REPO_URL='chengyi818/dotfiles'
+REPO_URL='jarry-hub/dotfiles'
 
 ######################## BASIC SETUP TOOLS
 msg() {
